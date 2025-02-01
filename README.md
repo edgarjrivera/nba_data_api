@@ -1,6 +1,7 @@
 # nba_data_api
 
-![NBA Logo](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/NBA_logo.svg/2560px-NBA_logo.svg.png)
+![image](https://github.com/user-attachments/assets/1ae87d7f-56a1-47e8-a4d7-5a98267f3412)
+
 
 A Python API for retrieving NBA data.  This API provides access to player information, team details, game statistics, league standings, and more.
 
@@ -30,7 +31,7 @@ This project offers a convenient way to access a wide range of NBA data through 
 1.  Clone the repository:
 
     ```bash
-    git clone [https://github.com/YOUR_USERNAME/nba_data_api.git](https://www.google.com/search?q=https://github.com/YOUR_USERNAME/nba_data_api.git)
+    git clone [[https://github.com/YOUR_USERNAME/nba_data_api.git](https://www.google.com/search?q=https://github.com/YOUR_USERNAME/nba_data_api.git)](https://github.com/edgarjrivera/nba_data_api.git)
     cd nba_data_api
     ```
 
