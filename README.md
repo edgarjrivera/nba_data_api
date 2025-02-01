@@ -1,6 +1,6 @@
 # nba_data_api
 
-<img src="https://github.com/user-attachments/assets/1ae87d7f-56a1-47e8-a4d7-5a98267f3412" alt="image" width="300"> 
+<img src="https://github.com/user-attachments/assets/1ae87d7f-56a1-47e8-a4d7-5a98267f3412" alt="image" width="150"> 
 
 
 A Python API for retrieving NBA data.  This API provides access to player information, team details, game statistics, league standings, and more.
