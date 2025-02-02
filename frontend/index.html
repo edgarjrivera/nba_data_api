@@ -8,21 +8,28 @@
 </head>
 <body>
     <h1>NBA Teams</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Team Name</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Abbreviation</th>
-                <th>Year Founded</th>
-            </tr>
-        </thead>
-        <tbody id="teams-table">
-            <!-- Teams will be inserted here -->
-        </tbody>
-    </table>
 
+    <div id="conferences-container">
+        <div id="eastern-card" class="conference-card">
+            <h2>Eastern Conference</h2>
+            <div class="team-list" id="eastern-teams"></div>
+        </div>
+
+        <div id="western-card" class="conference-card">
+            <h2>Western Conference</h2>
+            <div class="team-list" id="western-teams"></div>
+        </div>
+    </div>
+
+    <!-- Modal for Team Details -->
+    <div id="team-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="team-details"></div>
+        </div>
+    </div>
+
+    <script src="constants.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

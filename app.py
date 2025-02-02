@@ -1,21 +1,28 @@
 from flask import Flask, jsonify, send_from_directory
-from routes import api_bp  # Import the Blueprint
+from routes import api_bp
 
 app = Flask(__name__)
 
-# Register Blueprint
+# Register API routes
 app.register_blueprint(api_bp, url_prefix='/api')
 
-# Serve static files from the frontend folder
+# Serve static files
 @app.route('/')
 def serve_index():
-    return send_from_directory('frontend', 'index.html')
+    try:
+        return send_from_directory('frontend', 'index.html')
+    except Exception as e:
+        app.logger.error(f"Error serving index.html: {e}")
+        return jsonify({"error": "File not found"}), 500
 
 @app.route('/<path:path>')
 def serve_static_files(path):
-    return send_from_directory('frontend', path)
+    try:
+        return send_from_directory('frontend', path)
+    except Exception as e:
+        app.logger.error(f"Error serving static file {path}: {e}")
+        return jsonify({"error": "File not found"}), 500
 
-# Run the Flask app
 if __name__ == '__main__':
     import pyfiglet
     ascii_banner = pyfiglet.figlet_format("NBA Data API")
@@ -23,6 +30,5 @@ if __name__ == '__main__':
     print("🔥 Welcome to the NBA Data API! 🔥")
     print("🚀 Server running at: http://127.0.0.1:5000/api/")
     print("===================================\n")
-    
-    app.run(debug=True)
 
+    app.run(debug=True)
