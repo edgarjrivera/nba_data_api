@@ -23,6 +23,7 @@ def serve_static_files(path):
         app.logger.error(f"Error serving static file {path}: {e}")
         return jsonify({"error": "File not found"}), 500
 
+
 if __name__ == '__main__':
     import pyfiglet
     ascii_banner = pyfiglet.figlet_format("NBA Data API")

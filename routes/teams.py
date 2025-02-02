@@ -1,14 +1,25 @@
-from flask import jsonify
-from nba_api.stats.endpoints import teamgamelogs
+import time
+from flask import jsonify, current_app
 from nba_api.stats.static import teams
-from routes import api_bp # Import Blueprint
+from routes import api_bp
+from utils import get_response_metrics 
 
 @api_bp.route('/teams', methods=['GET'])
 def get_teams():
     try:
+         # ✅ Record start time
+        start_time = time.time()
+
+         # Fetch team data
         team_list = teams.get_teams()
-        return jsonify(team_list)
+        response_json = jsonify(team_list)
+
+        # ✅ Log response size
+        get_response_metrics(response_json, start_time)
+
+        return response_json
     except Exception as e:
+        current_app.logger.error(f"Error fetching teams: {e}")
         return jsonify({"error": str(e)}), 500
 
 @api_bp.route('/team/stats/<int:team_id>', methods=['GET'])
