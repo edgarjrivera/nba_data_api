@@ -69,13 +69,23 @@ function showTeamDetails(team) {
     const teamDetails = document.getElementById("team-details");
 
     // Populate the modal with team information
-    teamDetails.innerHTML = `
-        <h2>${team.full_name} (${team.abbreviation})</h2>
-        <img src="assets/${team.abbreviation}-logo.svg" alt="${team.full_name} Logo"
-             onerror="this.onerror=null; this.src='assets/default-logo.svg';" width="100">
-        <p><strong>City:</strong> ${team.city}, ${team.state}</p>
-        <p><strong>Founded:</strong> ${team.year_founded}</p>
-    `;
+    const championships = TEAM_CHAMPIONSHIPS[team.abbreviation] || 0;
+
+ // Generate trophy image elements based on number of championships
+ let trophyHTML = '';
+ for (let i = 0; i < championships; i++) {
+     trophyHTML += `<img src="assets/nba-trophy-logo.svg" alt="Trophy" class="trophy-icon">`;
+ }
+
+ teamDetails.innerHTML = `
+ <img src="assets/${team.abbreviation}-logo.svg" alt="${team.full_name} Logo"
+      onerror="this.onerror=null; this.src='assets/default-logo.svg';">
+ <h2>${team.full_name}</h2>
+ <p><strong>City:</strong> ${team.city}, ${team.state}</p>
+ <p><strong>Founded:</strong> ${team.year_founded}</p>
+ ${championships > 0 ? `<div class="trophy-container">${trophyHTML}</div>` : '<p>No championships</p>'}
+`;
+
 
     // Display the modal
     document.getElementById("team-modal").style.display = "flex";
@@ -100,3 +110,11 @@ async function fetchPlayers() {
         console.error("Error fetching players stats:", error);
     }
 }
+
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        document.getElementById("team-modal").style.display = "none";
+    }
+});
+

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NBA Teams</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 </head>
 <body>
     <h1>NBA Teams</h1>
@@ -24,10 +25,11 @@
     <!-- Modal for Team Details -->
     <div id="team-modal" class="modal">
         <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <div id="team-details"></div>
+          <!-- 🔽 Moved inside modal-content -->
+          <span class="close-btn">&times;</span>
+          <div id="team-details"></div>
         </div>
-    </div>
+      </div>
 
     <script src="constants.js"></script>
     <script src="script.js"></script>

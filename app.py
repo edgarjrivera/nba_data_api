@@ -1,13 +1,20 @@
 from flask import Flask, jsonify, send_from_directory
 from routes import api_bp
+import os
+from flask_cors import CORS 
 
 app = Flask(__name__)
+CORS(app)
 
 # Register API routes
 app.register_blueprint(api_bp, url_prefix='/api')
 
 # Serve static files
-@app.route('/')
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'frontend/assets'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
 def serve_index():
     try:
         return send_from_directory('frontend', 'index.html')
